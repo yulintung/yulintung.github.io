@@ -3,7 +3,7 @@
         width: 100%;
     }
     .rh-mask{
-        font-size: 13px;
+        font-size: 12px;
         letter-spacing:5px;
     }
     #header{
@@ -46,9 +46,9 @@
         width: 33.33%;
     }
     .rh-mask{
-        font-size: 14px;
+        font-size: 13px;
         letter-spacing:2px;
-        line-height:26px;
+        line-height:24px;
     }
     #header{
         display:none;
