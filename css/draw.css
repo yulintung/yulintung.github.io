@@ -136,6 +136,7 @@ a:visited{
     width: 90%;
     height: 90%;
     opacity: 0;
+    z-index: 6;
     transition-delay: 0s, 0s, 0s, 0s;
     transition-duration: 0.8s, 0.8s, 0.8s, 0.8s;
     transition-property: opacity;
