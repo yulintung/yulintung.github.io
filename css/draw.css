@@ -92,7 +92,7 @@ a:visited{
 
 .rh-effect {
     position: absolute;
-    z-index: 4;
+    z-index: 40;
     /*left: 33px;*/
     background: #FFF;
     top: 0px;
