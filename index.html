@@ -96,20 +96,19 @@
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
 $(window).load(function() {
-    //$(".details").hide();
     $(".loading").fadeOut(2600);
 });
 $(document).ready(function() {
     $(".details-info").click(function(){
         $(".loading-info").show(1000,function(){
             $(".details").fadeIn(2000);
-            $("html,body").css({"overflow":"hidden"});
+            //$("html,body").css({"overflow":"hidden"});
         });
     });
     $(".loading-info").click(function(){
         $(".details").fadeOut(2000,function(){
             $(".loading-info").fadeOut(1000);  
-            $("html,body").css({"overflow":"visible"});  
+            //$("html,body").css({"overflow":"visible"});  
         });
     });
 });
