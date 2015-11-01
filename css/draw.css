@@ -75,6 +75,9 @@
     }
 }
 
+body,html{
+    overflow: hidden;
+}
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 20px;
@@ -131,7 +134,7 @@ a:visited {
 }
 
 .details {
-    z-index: 11;
+    z-index: 9;
     color: #ecf0f1;
     overflow-x:hidden;
     overflow-y:scroll; 
