@@ -96,13 +96,14 @@
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
 $(window).load(function() {
-    alert(screen.width+", "+screen.height);
+    //alert(screen.width+", "+screen.height);
     $(".loading").fadeOut(2600);
 });
 $(document).ready(function() {
     $(".details-info").click(function(){
         $(".loading-info").show(1000,function(){
-            alert(screen.width+", "+screen.height);
+            //alert(screen.width+", "+screen.height);
+            $(".details").css({"width":screen.width,"height":screen.height});
             $(".details").fadeIn(2000);
             $("html,body").css({"overflow":"hidden"});
         });
