@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/draw.css">
+    <link rel="stylesheet" href="css/draw.min.css">
     <link href="asset/front.jpg" rel="image_src" type="image/jpeg">
 </head>
 
@@ -57,7 +57,7 @@
                 <h4>Project</h4>
                 <ul>
                     <li>freelancer <u>at</u> nomeatstudio </li>
-                    <li>starting <a href="https://github.com/yulintung/rh-effect">rh-effect</a></li>
+                    <li>starting <a href="https://github.com/yulintung/rh-effect" target="_blank">rh-effect</a></li>
                 </ul>
             </div>
             <img class="rh-img" src="asset/photo_2.jpg" />
@@ -82,7 +82,7 @@
             <div style="padding-top:10%;width:80%;height:80%;text-align:left">
                 <p>Hi All,</p>
                 <p>I am an experienced web developer, an international student, and I am looking for any possible part-time/full-time jobs in Australia. </p>
-                <p>I had worked as a full-time Java programmer for five years, and currently a freelancing web developer. My previous job mainly focused on web services, applications and location based services. I am familiar with Java and Java related framework such as spring MVC, core spring, struts2 and hibernate. I had participated in rewriting an internal information system which previously made only by thousands of JSPs into a multi-tier and MVC structure system. Furthermore, dealing with cyber attacks from the internet and working in the unix-like operating system were necessary for me. In addition, front end technologies, like Javascript, JQuery, CSS3 and HTML are what I am used to.</p>
+                <p>I had worked as a full-time Java programmer for five years, and currently a freelancing web developer. My previous job mainly focused on web services, applications and location based services. I am familiar with Java and Java related frameworks such as spring MVC, core spring, struts2 and hibernate. I had participated in rewriting an internal information system which previously made by thousands of JSPs into a multi-tier and MVC structure system. Furthermore, dealing with cyber attacks from the internet and working in the unix-like operating system were necessary for me. In addition, front end technologies, like Javascript, JQuery, CSS3 and HTML are what I am used to.</p>
                 <p>Any thoughts or suggestion, please feel free to contact.</p>
                 <ul>
                     <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
@@ -101,7 +101,6 @@ $(window).load(function() {
 $(document).ready(function() {
     $(".details-info").click(function(){
         $(".loading-info").show('slow',function(){
-            //$(".details").css({"width":screen.width,"height":screen.height});
             $(".details").fadeIn(2000);
             $("html,body").css({"overflow":"hidden"});
         });
@@ -113,7 +112,5 @@ $(document).ready(function() {
         });
     });
 });
-
 </script>
-
 </html>
