@@ -67,7 +67,7 @@
                 <h4>Contact</h4>
                 <ul>
                     <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
-                    <li><a href="https://au.linkedin.com/in/yulintung">linkedin</a></li>
+                    <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
                 </ul>
             </div>
             <img class="rh-img" src="asset/col_3.jpg" />
@@ -86,7 +86,7 @@
                 <p>Any thoughts or suggestion, please feel free to contact.</p>
                 <ul>
                     <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
-                    <li><a href="https://au.linkedin.com/in/yulintung">linkedin</a></li>
+                    <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
                 </ul>
             </div>
         </div>
@@ -96,11 +96,13 @@
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
 $(window).load(function() {
+    alert(screen.width+", "+screen.height);
     $(".loading").fadeOut(2600);
 });
 $(document).ready(function() {
     $(".details-info").click(function(){
         $(".loading-info").show(1000,function(){
+            alert(screen.width+", "+screen.height);
             $(".details").fadeIn(2000);
             $("html,body").css({"overflow":"hidden"});
         });
