@@ -134,6 +134,8 @@ a:visited {
     display: none;
     z-index: 11;
     color: #ecf0f1;
+    overflow-x:hidden;
+    overflow-y:scroll; 
 }
 
 .details-info:hover {
