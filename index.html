@@ -68,11 +68,18 @@
         transition-duration: 2.8s, 2.8s, 2.8s, 2.8s;
         transition-property: opacity;
         transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-        z-index:3;
+        z-index: 3;
     }
-    .story div{
-    	width:80%;height:80%;padding:5%;text-align:left;
+    
+    .story div {
+        width: 80%;
+        height: 80%;
+        padding: 5%;
+        text-align: left;
+        -webkit-transform: translate3d(0, 0, 1px);
+        transform: translate3d(0, 0, 1px);
     }
+    
     .cube {
         float: left;
         height: 100%;
@@ -127,36 +134,37 @@
         color: #979797;
         text-decoration: none;
     }
-    .loading{
-    text-align: center;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background: #000000;
-    opacity: 0.9;
-    z-index: 10;
-    transition-delay: 0s, 0s, 0s, 0s;
-    transition-duration: 0.8s, 0.8s, 0.8s, 0.8s;
-    transition-property: opacity;
-    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.loading-info {
-    display: none;
-    background: #2c3e50;
-    text-align: center;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    opacity: 0.9;
-    z-index: 10;
-    overflow-x:hidden;
-    overflow-y:auto;
-}
+    
+    .loading {
+        text-align: center;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        opacity: 0.9;
+        z-index: 10;
+        transition-delay: 0s, 0s, 0s, 0s;
+        transition-duration: 0.8s, 0.8s, 0.8s, 0.8s;
+        transition-property: opacity;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    
+    .loading-info {
+        display: none;
+        background: #2c3e50;
+        text-align: center;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+        z-index: 10;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
     </style>
 </head>
 
@@ -168,78 +176,90 @@
                 <div class="story">
                     <div>
                         <h4>Yulin Tung</h4>
-						<ul><li>
-                        About:a coder, a web developer, a java programmer, a penetration tester</li>
-                        <li>Language: English, Mandarin</li></ul></div>
+                        <ul>
+                            <li>
+                                About:a coder, a web developer, a java programmer, a penetration tester</li>
+                            <li>Language: English, Mandarin</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="cube" style="background:#2ecc71;">
                 <div class="cover">CAREER</div>
-                <div class="story"><div>
-                    <h4>Career</h4>A full stack web developer with several years' experience in Java and front-end technology looking for an opportunity to join a creative team to work with a group of passionate and talented developers. [<span class="details-info">more</span>]</div></div>
+                <div class="story">
+                    <div>
+                        <h4>Career</h4>A full stack web developer with several years' experience in Java and front-end technology looking for an opportunity to join a creative team to work with a group of passionate and talented developers. [<span class="details-info">more</span>]</div>
+                </div>
             </div>
             <div class="cube" style="background:#3498db;">
                 <div class="cover">IT KEYWORDS</div>
-                <div class="story"><div>
-                    <h4>IT Keywords</h4>Java, Javascript, HTML, CSS, Python, SQL, Linux, Web, Web Service, Web Security</div></div>
+                <div class="story">
+                    <div>
+                        <h4>IT Keywords</h4>Java, Javascript, HTML, CSS, Python, SQL, Linux, Web, Web Service, Web Security</div>
+                </div>
             </div>
         </div>
         <div style="height:50%">
             <div class="cube" style="background:#f1c40f;">
                 <div class="cover">PROJECT</div>
-                <div class="story"><div>
-                    <h4>Project</h4>
-                    <ul>
-                        <li>freelancer <u>at</u> nomeatstudio </li>
-                        <li>starting <a href="https://github.com/yulintung/rh-effect" target="_blank">rh-effect</a></li>
-                    </ul>
-                </div></div>
+                <div class="story">
+                    <div>
+                        <h4>Project</h4>
+                        <ul>
+                            <li>freelancer <u>at</u> nomeatstudio </li>
+                            <li>starting <a href="https://github.com/yulintung/rh-effect" target="_blank">rh-effect</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="cube" style="background:#e67e22;">
                 <div class="cover">LOCATION</div>
-                <div class="story"><div>
-                    <h4>Location</h4>
-                    <ul>
-                        <li>Sydney, NSW, Australia</li>
-                        <li>Taipei, Taiwan</li>
-                    </ul>
-                </div></div>
+                <div class="story">
+                    <div>
+                        <h4>Location</h4>
+                        <ul>
+                            <li>Sydney, NSW, Australia</li>
+                            <li>Taipei, Taiwan</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="cube" style="background:#e74c3c;">
                 <div class="cover">CONTACT</div>
-                <div class="story"><div>
-                    <h4>Contact</h4>
+                <div class="story">
+                    <div>
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
+                            <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loading">
+        <h2 style="padding-top:20%">CLICK!</h2></div>
+    <div class="loading-info">
+        <center>
+            <div class="details">
+                <div style="height:10%"></div>
+                <div style="padding-top:10%;width:80%;height:80%;text-align:left">
+                    <p>Hi All,</p>
+                    <p>I am an experienced web developer, an international student, and I am looking for any possible part-time/full-time jobs in Australia. </p>
+                    <p>I had worked as a full-time Java programmer for five years, and currently a freelancing web developer. My previous job mainly focused on web services, web applications and location based services. I am familiar with Java and Java related frameworks such as spring MVC, core spring, struts2 and hibernate. I had participated in rewriting an internal information system which previously made by thousands of JSPs into a multi-tier and MVC structure system. Furthermore, dealing with cyber attacks from the internet and working in the unix-like operating system were necessary for me in the previous position. In addition, front end technologies, like Javascript, JQuery, CSS3 and HTML are what I am used to.</p>
+                    <p>Any thoughts or suggestion, please feel free to contact.</p>
                     <ul>
                         <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
                         <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
                     </ul>
-                </div></div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="loading"><h2 style="padding-top:20%">CLICK!</h2></div>
-    <div class="loading-info">
-        <center>
-        <div class="details">
-            <div style="height:10%"></div>
-            <div style="padding-top:10%;width:80%;height:80%;text-align:left">
-                <p>Hi All,</p>
-                <p>I am an experienced web developer, an international student, and I am looking for any possible part-time/full-time jobs in Australia. </p>
-                <p>I had worked as a full-time Java programmer for five years, and currently a freelancing web developer. My previous job mainly focused on web services, web applications and location based services. I am familiar with Java and Java related frameworks such as spring MVC, core spring, struts2 and hibernate. I had participated in rewriting an internal information system which previously made by thousands of JSPs into a multi-tier and MVC structure system. Furthermore, dealing with cyber attacks from the internet and working in the unix-like operating system were necessary for me in the previous position. In addition, front end technologies, like Javascript, JQuery, CSS3 and HTML are what I am used to.</p>
-                <p>Any thoughts or suggestion, please feel free to contact.</p>
-                <ul>
-                    <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
-                    <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
-                </ul>
-            </div>
-        </div>
         </center>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
-
-
 $(window).load(function() {
     $(".loading").fadeOut(2600);
 });
