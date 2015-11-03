@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -7,78 +7,216 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-    <meta property="og:image" content="http://yulintung.github.io/asset/front.jpg"/>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/draw.min.css">
-    <link href="asset/front.jpg" rel="image_src" type="image/jpeg">
+    <style>
+    @media only screen and (min-width: 220px) {
+        .cube {
+            width: 100%;
+        }
+        .cover {
+            margin-top: 10%;
+            width: 100%;
+        }
+    }
+    
+    @media only screen and (min-width: 550px) {
+        .cube {
+            width: 50%;
+        }
+        .cover {
+            margin-top: 10%;
+            width: 50%;
+        }
+    }
+    
+    @media only screen and (min-width: 620px) {
+        .cube {
+            width: 50%;
+        }
+        .cover {
+            margin-top: 10%;
+            width: 50%;
+        }
+    }
+    
+    @media only screen and (min-width: 850px) {
+        .cube {
+            width: 33.33%;
+        }
+        .cover {
+            margin-top: 10%;
+            width: 33.33%;
+        }
+    }
+    
+    @media only screen and (min-width: 980px) {
+        .cube {
+            width: 33.33%;
+        }
+        .cover {
+            margin-top: 10%;
+            width: 33.33%;
+        }
+    }
+    
+    .story {
+        background: #FFFFFF;
+        height: 100%;
+        z-index: 20;
+        opacity: 0;
+        text-align: center;
+        transition-delay: 0s, 0s, 0s, 0s;
+        transition-duration: 2.8s, 2.8s, 2.8s, 2.8s;
+        transition-property: opacity;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .story div{
+    	width:80%;height:80%;padding:5%;text-align:left;
+    }
+    .cube {
+        float: left;
+        height: 100%;
+        z-index: 3;
+    }
+    
+    .cover {
+        color: #e1e1e1;
+        position: absolute;
+        z-index: 4;
+        text-align: center;
+    }
+    
+    .cube:hover .story {
+        opacity: 0.8;
+    }
+    
+    .cube:hover .cover {
+        opacity: 0;
+    }
+    
+    h4 {
+        margin: 0px;
+    }
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+        line-height: 20px;
+        color: #979797;
+        height: 100%;
+        font-size: 13px;
+        letter-spacing: 2px;
+        line-height: 24px;
+    }
+    
+    a {
+        color: #979797;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #979797;
+        text-decoration: underline;
+    }
+    
+    a:active {
+        color: #979797;
+        text-decoration: none;
+    }
+    
+    a:visited {
+        color: #979797;
+        text-decoration: none;
+    }
+    .loading{
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.9;
+    z-index: 10;
+    transition-delay: 0s, 0s, 0s, 0s;
+    transition-duration: 0.8s, 0.8s, 0.8s, 0.8s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.loading-info {
+    display: none;
+    background: #2c3e50;
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    z-index: 10;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+    </style>
 </head>
 
 <body>
-    <div style="position:absolute;top:0px;left:0px;width:100%;height:100%;background:#e1e1e1">
-        <div id="header" style="background:#e1e1e1;height:35px;"></div>
-        <div class="rh-effect square" id="card-about">
-            <div class="rh-mask">
-                <h4>About - Yulin Tung</h4>
-                <ul>
-                    <li>a coder, a web developer, a java programmer, a penetration tester</li>
-                    <li>Language: English, Mandarin</li>
-                    <li>IT keyword: Java, Javascript, HTML, CSS, Python, SQL, Linux, Web, Web Service, Web Security</li>
-                </ul>
+    <div style="position:absolute;top:0px;left:0px;width:100%;height:100%;background:#e1e1e1;">
+        <div style="height:50%">
+            <div class="cube" style="background:#1abc9c;">
+                <div class="cover">ABOUT</div>
+                <div class="story">
+                    <div>
+                        <h4>Yulin Tung</h4>
+						<ul><li>
+                        About:a coder, a web developer, a java programmer, a penetration tester</li>
+                        <li>Language: English, Mandarin</li></ul></div>
+                </div>
             </div>
-            <img class="rh-img" src="asset/photo_4.jpg" />
+            <div class="cube" style="background:#2ecc71;">
+                <div class="cover">CAREER</div>
+                <div class="story"><div>
+                    <h4>Career</h4>A full stack web developer with several years' experience in Java and front-end technology looking for an opportunity to join a creative team to work with a group of passionate and talented developers. [<span class="details-info">more</span>]</div></div>
+            </div>
+            <div class="cube" style="background:#3498db;">
+                <div class="cover">IT KEYWORDS</div>
+                <div class="story"><div>
+                    <h4>IT Keywords</h4>Java, Javascript, HTML, CSS, Python, SQL, Linux, Web, Web Service, Web Security</div></div>
+            </div>
         </div>
-        <div class="rh-effect square">
-            <div class="rh-mask">
-                <h4>Career</h4>
-                <p>A full stack web developer with several years' experience in Java and front-end technology looking for an opportunity to join a creative team to work with a group of passionate and talented developers. [<span class="details-info">more</span>]</p>
+        <div style="height:50%">
+            <div class="cube" style="background:#f1c40f;">
+                <div class="cover">PROJECT</div>
+                <div class="story"><div>
+                    <h4>Project</h4>
+                    <ul>
+                        <li>freelancer <u>at</u> nomeatstudio </li>
+                        <li>starting <a href="https://github.com/yulintung/rh-effect" target="_blank">rh-effect</a></li>
+                    </ul>
+                </div></div>
             </div>
-            <img class="rh-img" src="asset/col_1.jpg" />
-        </div>
-        <div class="rh-effect square">
-            <div class="rh-mask">
-                <h4>Location</h4>
-                <ul>
-                    <li>Sydney, NSW, Australia</li>
-                    <li>Taipei, Taiwan</li>
-                </ul>
+            <div class="cube" style="background:#e67e22;">
+                <div class="cover">LOCATION</div>
+                <div class="story"><div>
+                    <h4>Location</h4>
+                    <ul>
+                        <li>Sydney, NSW, Australia</li>
+                        <li>Taipei, Taiwan</li>
+                    </ul>
+                </div></div>
             </div>
-            <img class="rh-img" src="asset/photo_1.jpg" />
-        </div>
-        <div class="rh-effect square">
-            <div class="rh-mask">
-                <h4>Degree / Certificate</h4>
-                <ul>
-                    <li>Master in information management</li>
-                    <li>Bachelor of Arts, minoring in computing</li>
-                    <li>Sun Certified Java Programmer</li>
-                    <li>Oracle Certified Web Component Developer</li>
-                    <li>Ec-council CEH</li>
-                </ul>
+            <div class="cube" style="background:#e74c3c;">
+                <div class="cover">CONTACT</div>
+                <div class="story"><div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
+                        <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
+                    </ul>
+                </div></div>
             </div>
-            <img class="rh-img" src="asset/col_2.jpg" />
-        </div>
-        <div class="rh-effect square">
-            <div class="rh-mask">
-                <h4>Project</h4>
-                <ul>
-                    <li>freelancer <u>at</u> nomeatstudio </li>
-                    <li>starting <a href="https://github.com/yulintung/rh-effect" target="_blank">rh-effect</a></li>
-                </ul>
-            </div>
-            <img class="rh-img" src="asset/photo_2.jpg" />
-        </div>
-        <div class="rh-effect square">
-            <div class="rh-mask">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:yulin.tung@gmail.com">yulin.tung@gmail.com</a></li>
-                    <li><a href="https://au.linkedin.com/in/yulintung" target="_blank">linkedin</a></li>
-                </ul>
-            </div>
-            <img class="rh-img" src="asset/col_3.jpg" />
         </div>
     </div>
-    <!--<div style="height:35px">.</div>-->
     <div class="loading"><h2 style="padding-top:20%">CLICK!</h2></div>
     <div class="loading-info">
         <center>
@@ -100,22 +238,29 @@
 </body>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
+
+
 $(window).load(function() {
     $(".loading").fadeOut(2600);
 });
 $(document).ready(function() {
-    $(".details-info").click(function(){
-        $(".loading-info").show('slow',function(){
+    $(".details-info").click(function() {
+        $(".loading-info").show('slow', function() {
             $(".details").fadeIn(2000);
-            $("html,body").css({"overflow":"hidden"});
+            $("html,body").css({
+                "overflow": "hidden"
+            });
         });
     });
-    $(".loading-info").click(function(){
-        $(".details").fadeOut(1000,function(){
-            $(".loading-info").fadeOut(1000);  
-            $("html,body").css({"overflow":"visible"});  
+    $(".loading-info").click(function() {
+        $(".details").fadeOut(1000, function() {
+            $(".loading-info").fadeOut(1000);
+            $("html,body").css({
+                "overflow": "visible"
+            });
         });
     });
 });
 </script>
+
 </html>
