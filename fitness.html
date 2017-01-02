@@ -35,9 +35,7 @@ $("#cal").click(function(){
 	var temp = (W1*(1-F1))/(1-F2);
 	d = Math.round((((W1 - temp)*7700)/kcal)*10)/10;
 	w = Math.round(d/e_days);
-	$("#result").html(d +" days / "+w+" weeks you will need to lose weight, and the target weight might be "+temp+" KG");
-	$("#result_week").html(w);
-	temp
+	$("#result").html(d +" days / "+w+" weeks you will need to lose weight, and the target weight might be "+Math.round(temp)+" KG");
 });
 </script>
 </body>
