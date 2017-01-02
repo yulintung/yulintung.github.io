@@ -6,11 +6,11 @@
 <body>
 Sample
 <hr />
-current weight: <input type="text" name="current_weight" id="current_weight" value="60" />KG<br />
+current weight: <input type="text" name="current_weight" id="current_weight" value="60" />kg<br />
 current body fat: <input type="text" name="current_fat" id="current_fat" value="0.30" /><br />
 target body fat: <input type="text" name="target_fat" id="target_fat" value="0.20" /><br />
 daily consumption of calories by exercise:<input type="text" name="consume_kcal" id="consume_kcal" value="300" /><br />
-how many days do you exercise every week?<input type="text" name="e_days" id="e_days" value="5" /><br />
+how many days do you exercise per week?<input type="text" name="e_days" id="e_days" value="5" /><br />
 <input type="button" id="cal" value="calculate" />
 <br /><br />
 <hr />
@@ -35,7 +35,7 @@ $("#cal").click(function(){
 	var temp = (W1*(1-F1))/(1-F2);
 	d = Math.round((((W1 - temp)*7700)/kcal)*10)/10;
 	w = Math.round(d/e_days);
-	$("#result").html(d +" days / "+w+" weeks you will need to lose weight, and the target weight might be "+Math.round(temp)+" KG");
+	$("#result").html(d +" days / "+w+" weeks you will need to lose weight, and the target weight might be "+Math.round(temp)+" kg");
 });
 </script>
 </body>
