@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=yes">
     <title>ReCAPTCHA 示範</title>
     <link rel="stylesheet" href="https://www.gstatic.com/recaptcha/api2/r20170915175810/demo__ltr.css" type="text/css">
-    <script src='/recaptcha/api.js' async defer></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
     <div class="sample-form">
@@ -19,8 +19,8 @@
                     <li><p>請選取您喜愛的顏色：</p><label class="jfk-radiobutton-label" for="option1"><input class="jfk-radiobutton-checked" type="radio" id="option1" name="radios" value="option1" disabled aria-disabled="true" checked aria-checked="true">紅色</label><label class="jfk-radiobutton-label" for="option2"><input class="jfk-radiobutton" type="radio" id="option2" name="radios" value="option2" disabled aria-disabled="true">綠色</label></li>
                     <li>
                         <div class="">
-                            <!-- BEGIN: ReCAPTCHA implementation example. --><div id="recaptcha-demo" class="g-recaptcha" data-sitekey="6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-" data-callback="onSuccess"></div>
-                            <script>
+                            <div class="g-recaptcha" id="recaptcha-demo" data-sitekey="6Ldh-zAUAAAAAEKeC7P9ymejjy00Ys2GbVJ8ag77"></div>
+							<script>
                       var onSuccess = function(response) {
                         var errorDivs = document.getElementsByClassName("recaptcha-error");
                         if (errorDivs.length) {
