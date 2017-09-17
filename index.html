@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+</head>
+
+<body>
+Content of the document......
+<div class="g-recaptcha" data-sitekey="6Ldh-zAUAAAAAEKeC7P9ymejjy00Ys2GbVJ8ag77"></div>
+</body>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<script>
+                      var onSuccess = function(response) {
+                        var errorDivs = document.getElementsByClassName("recaptcha-error");
+                        if (errorDivs.length) {
+                          errorDivs[0].className = "";
+                        }
+                        var errorMsgs = document.getElementsByClassName("recaptcha-error-message");
+                        if (errorMsgs.length) {
+                          errorMsgs[0].parentNode.removeChild(errorMsgs[0]);
+                        }
+                        };</script>
+</html>
