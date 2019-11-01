@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>decrypted Image</title>
+<script type="text/javascript" src="js/2.0.0-crypto-sha1-hmac-pbkdf2-ofb-aes.js"></script>
+<script type="text/javascript" src="js/rawdeflate.js"></script>
+<script type="text/javascript" src="js/rawinflate.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<canvas id="testImg"></canvas>
+	<input type="button" value="showImage" onclick="showImage()">
+</body>
+<script type="text/javascript">
+	
+	//圖片加解密
+	var password = '1q2w3e4r';
+	//store img binary
+	var imageMap = new Map();
+		
+	preload();
+	
+	//顯示用的 canvas id
+	var canvas = $('#testImg')[0];
+	//var width = 1334;
+	//var height = 750;
+	
+	var width = 244;
+	var height = 207;
+	
+	canvas.width = width;
+	canvas.height = height;
+	
+	var ctx = canvas.getContext('2d');
+	ctx.drawImage(new Image(), 0, 0);
+	var imgd = ctx.getImageData(0, 0, width, height);
+
+	var showImage = function () {
+		var pic = imageMap.get("halloween");
+		var temp = Krypto.AES.decrypt(pic, password);
+		var arr = canvasStringToArr(RawDeflate.inflate(temp));
+		for (var i=0; i<arr.length; i++) { arr[i]-=0; }
+		for (var i=0;i<arr.length;i+=4) {
+			imgd.data[i]=arr[i];
+			imgd.data[i+1]=arr[i+1];
+			imgd.data[i+2]=arr[i+2];
+			imgd.data[i+3]=255;
+		}
+		ctx.putImageData(imgd, 0, 0);
+		console.log(ctx);
+	}
+	
+	var canvasStringToArr = function (s) {
+		var p=[];
+		for (var i=0; i<s.length; i+=3) {
+			for (var j=0; j<3; j++) {
+				p.push(s.substring(i+j,i+j+1).charCodeAt());
+			} 
+			p.push(255);
+		}
+		return reverseDiffFilter(p);
+	}
+	
+	var reverseDiffFilter = function (darr) {
+		var arr=[darr[0],darr[1],darr[2],darr[3]];
+		for(var i=4;i<darr.length;i+=4) 
+		{
+		for (var j=0; j<3; j++) {
+			arr.push( (arr[i+j-4]+darr[i+j])%256 );
+		}
+		arr.push(255);
+		}
+		return arr;
+	}
+	
+	function readFile(path, filename, filetype, callback) {
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET", path + filename + "."+ filetype, false);
+		rawFile.onreadystatechange = function () {
+			if(rawFile.readyState === 4) {
+				if(rawFile.status === 200 || rawFile.status == 0) {
+					callback(filename, rawFile.responseText);
+				}
+			}
+		}
+		rawFile.send(null);
+	}
+	
+	function storeImgs (filename, imgdata) {
+		console.log(imgdata);
+		imageMap.set(filename, imgdata);
+	}
+	
+	function preload () {
+		readFile("http://localhost:8080/pic/assets/", "halloween", "buf", storeImgs);
+	}
+</script>
+
+</html>

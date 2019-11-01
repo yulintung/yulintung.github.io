@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>unzip Image</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>
+</head>
+
+<body>
+	<img id="testImg" />
+	<input type="button" value="showImage" onclick="showImage()">
+</body>
+<script type="text/javascript">
+	
+	//store img binary
+	var imageMap = new Map();
+	//先存起來
+	preload();
+	
+	var showImage = function () {
+		$('#testImg').attr('src', 'data:image/jpg;base64,'+imageMap.get("bgtest"));
+	}
+	
+	function storeImgs (filename, imgdata) {
+		imageMap.set(filename, imgdata);
+	}
+	
+	function preload() {
+		var promise = new JSZip.external.Promise(function(resolve, reject) {
+			JSZipUtils.getBinaryContent('assets/bg.buf2', function(err, data) {
+				if (err) {
+					console.log(err);
+					reject(err);
+				} else {
+					resolve(data);
+				}
+			});
+		});
+
+		promise.then(JSZip.loadAsync).then(function(zip) {
+			for ( var key in zip.files) {
+				if (!zip.files[key].dir) {
+					var base = zip.file(zip.files[key].name).async("base64");
+					base.then(function(res) {
+						//先存起來
+						storeImgs("bgtest", res);
+					})
+				}
+			}
+		}).then(function success(data) { }, function error(e) { });
+		
+		var i = 0;
+		setInterval(function() {
+			i++;
+		}, 1000);
+	}
+</script>
+
+</html>

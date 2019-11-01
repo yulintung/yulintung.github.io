@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>encrypted Image</title>
+<script type="text/javascript" src="js/2.0.0-crypto-sha1-hmac-pbkdf2-ofb-aes.js"></script>
+<script type="text/javascript" src="js/rawdeflate.js"></script>
+<script type="text/javascript" src="js/rawinflate.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<canvas id="testImg"></canvas>
+	<input type="button" value="encryptAES" onclick="encryptAES()">
+</body>
+<script type="text/javascript">
+	
+	var password = '1q2w3e4r';
+	
+	var img = new Image();
+	//img.src = 'assets/bg.jpg';
+	img.src = 'assets/halloween.png';
+	
+	var ctx, imgd, pix;
+	var width = 0;
+	var height = 0;
+	
+	img.onload = function() {
+		var canvas = $('#testImg')[0];
+		console.log(this.width+", "+this.height);
+		width = this.width;
+		height = this.height;
+		
+		ctx = canvas.getContext('2d');
+		canvas.width = width;
+		canvas.height = height;
+		ctx.drawImage(this, 0, 0);
+		imgd = ctx.getImageData(0, 0, width, height);
+		pix = imgd.data;
+	}
+	
+	function encryptAES() {
+    	var s = RawDeflate.deflate(canvasArrToString(pix));
+    	var encrypted = Krypto.AES.encrypt(s, password);
+    	console.log(encrypted);
+  	}
+  
+	
+	function canvasArrToString(a) {
+		var s = "";
+		var darr = diffFilter(a);
+		for (var i = 0; i < darr.length; i += 3) {
+			s += (String.fromCharCode(darr[i])
+					+ String.fromCharCode(darr[i + 1]) + String
+					.fromCharCode(darr[i + 2]));
+		}
+		return s;
+	}
+	
+	function diffFilter(arr) {
+		var darr = [ arr[0], arr[1], arr[2] ];
+		for (var i = 4; i < arr.length; i += 4) {
+			for (var j = 0; j < 3; j++) {
+				darr.push((256 + (arr[i + j] - arr[i + j - 4])) % 256);
+			}
+		}
+		return darr;
+	}
+</script>
+
+</html>
