@@ -20,7 +20,7 @@ var question = [
 "10.If you could change anything about the way you were raised, what would it be?",
 "如果妳可以改變妳成長的方式，妳想改變什麼？",
 "11.Take four minutes and tell your partner your life story in as much detail as possible.",
-"花四分鐘盡量細節地告訴妳的妳的生命故事",
+"花四分鐘盡量細節地告訴妳的夥伴妳的生命故事",
 "12.If you could wake up tomorrow having gained any one quality or ability, what would it be?",
 "如果妳明天醒來可以擁有一種特質或能力，那會是什麼？",
 "13.If a crystal ball could tell you the truth about yourself, your life, the future or anything else, what would you want to know?",
