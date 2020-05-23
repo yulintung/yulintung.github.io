@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>36q</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            width: 100%;
+            background-color: #ffb4a2;
+            color: #865a56;
+            line-height: 1.8;
+            font-family: 'Playfair Display', serif;
+            font-size: 130%;
+            text-align: left;
+        }
+        font.highlight{
+            font-weight:bold;
+            color: #990000;
+        }
+    </style>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	<script src="36q.js"></script>
+</head>
+<body>
+
+<div class="row">
+</div>
+<div class="container">
+    <div class="jumbotron mt-3">
+        <div id="q_eng"></div>
+        <div id="q_cht"></div>
+    </div>
+    <!-- <div id="att0" class="jumbotron mt-3">
+        <h3>Vinyard</h3>
+        <ul id="vinyard">
+        </ul>
+    </div> -->
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <span class="navbar-brand" id="next">Next</span>
+    <span class="navbar-brand" id="prev">Prev</span>
+</nav>
+
+<script>
+    $(document).ready(function() {
+        var currentIdx = 0;
+
+        $("span#next").click(function(){
+            currentIdx = currentIdx+1;
+            if (currentIdx > 35) currentIdx = 0;
+            console.log("next:"+currentIdx);
+            chooseOne(currentIdx);
+        });
+        $("span#prev").click(function(){
+            currentIdx = currentIdx-1;
+            if (currentIdx < 0) currentIdx = 35;
+            chooseOne(currentIdx);
+        });
+
+        chooseOne(0);
+
+        function chooseOne(idx){
+            console.log(idx);
+            $("#q_eng").html(question[idx*2]);
+            $("#q_cht").html(question[idx*2+1]);
+        };
+    });
+</script>
+
+</body>
+</html>
