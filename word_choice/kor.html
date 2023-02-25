@@ -23,7 +23,8 @@
             $("img#correct").hide();
             $("img#incorrect").hide();
             
-            var wordArray = JSON.parse(jsondata);
+            //var wordArray = JSON.parse(jsondata);
+            var wordArray = jsondata;
             var order = getRandomNumber(4, wordArray.length);
             console.log(order);
 
