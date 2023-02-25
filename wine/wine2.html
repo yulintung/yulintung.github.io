@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>問答題</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        font.highlight{
+            font-weight:bold;
+            color: #990000;
+        }
+    </style>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="row">
+</div>
+<div class="container">
+    <div class="jumbotron mt-3">
+        <h2 id="question"></h2> <span id="question_id" />
+    </div>
+     <div id="att0" class="jumbotron mt-3">
+        <h3>Answer</h3>
+        <ul id="answer">
+        </ul>
+    </div>
+
+</div>
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" id="next">Next</a>
+    <a class="navbar-brand" href="#" id="prev">Prev</a>
+    <a class="navbar-brand" href="#" id="random">Random</a>
+    <!-- <a class="navbar-brand" href="#" id="hide">Hide</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="wine.html">葡萄</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="wine2.html">問答</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine3.html">語言</a>
+          </li>
+		   <li class="nav-item">
+            <a class="nav-link" href="search.html">搜尋</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="summary.html">摘要</a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<script>
+    var currentIdx = 0;
+
+    var question = [
+        '葡萄酒的起源',
+        '葡萄酒與羅馬天主教會的關係',
+        '葡萄酒近代發展',
+        '影響葡萄酒的主要因素？(6)',
+        '主要蟲害？(3)',
+        '主要疾病？(5)',
+        '白酒釀造過程，紅酒釀造過程，最大差異？',
+        '葡萄酒六類口感',
+        '品評的要素',
+        '酒標必要四內容',
+        '三種酒標分類法',
+        '餐酒搭配六原則',
+        '侍酒師的角色',
+        '侍酒溫度',
+        '窖藏葡萄酒三個原因',
+        '什麼能讓葡萄酒經由窖藏得到改善(7)',
+        '需要窖藏的酒(3)',
+        '窖藏對紅酒的影響(7)',
+        '窖藏對白酒的影響(5)',
+        '窖藏的四種條件',
+        '氣泡酒的四種釀法',
+        '釀造香檳酒的九步驟',
+        '轉瓶的目的',
+        '香檳可以怎麼分類？內容(3)',
+        '傳統法釀造的氣泡酒，除了香檳還有哪些？',
+        '轉移法跟傳統法的差異？',
+        '加烈酒的兩種釀造方式？有何差異？',
+        '波特酒釀造的產區、氣候、土壤',
+        '波特酒怎麼分類？',
+        '雪莉酒釀造的產區、氣候、土壤',
+        '雪利酒怎麼分類？',
+        '雪利酒的釀造系統？',
+        '法國法定產區系統',
+        '義大利法定產區系統',
+        '西班牙法定產區系統',
+        '德國法定產區系統',
+    ];
+	
+	var answer = [
+        '外高加索地區',
+        '本篤會-釀造頂級酒-保留紀錄,西多會-建立葡萄園',
+        '18-19世紀-歐洲受到病蟲害威脅,20世紀初-制定法律防止造假,20世紀末-科技進步',
+        'Climate氣候,Weather天氣,Soil土壤,Grape Variety 葡萄品種,Viticulture 葡萄栽培,Vinification葡萄酒釀造',
+        'Phylloxera葡萄根瘤蚜,Glassy-winged sharpshooter 玻璃翅葉蟬,Nematodes 線蟲',
+        'Botrytis 灰葡萄孢菌,Powdery Mildew 白粉黴,Downy Mildew 霜黴,Coulure落果,Millerandage發育不均勻',
+        '白酒:破皮-壓榨-發酵-熟成-裝瓶,紅酒:破皮-發酵-壓榨-熟成-裝瓶',
+        'Sweetness甜味,Acidity酸味,Tannin單寧,Alcohol酒精,Body酒體,Finish餘韻',
+        'Appearance外觀,Nose氣味,Palate口感,Conclusion結論',
+        'Product Type 產品類型,Volumn淨容量,Alcohol level酒精含量,Producer name/country 生產者/國家',
+        '葡萄品種,產區,品牌',
+        '基本,本質,重量,層次,風味,產區',
+        'S-salemanship,O-Operation,M-management,M-matching,E-education,L-leadership,I-innovation,E-ethics,R-respect',
+        '紅-高單寧重酒體 16-18,紅-中酒體 13-16,紅-輕酒體 8-12,白-重酒體-10-14,白-中酒體 8-10, 白-輕酒體-酸度低 4-8',
+        'Investment投資,Enjoyment享用,Business商業經營',
+        'Acid酸度,Tannin單寧,Alcohol酒精,Residual sugar殘糖量,Complexity複雜度,Minerality礦物質,Balance平衡',
+        'Barolo, Top Bordeaux 頂級波爾多,Vintage Port 年份波特酒',
+        'Loses color 褪色,Becomes brick/tawny變成磚紅或茶色,Tannins soften柔化單寧,Sediment precipitates產生沉澱物,Volumn decreases容量減少,Acquires bouquet增添醇香,Leather-licorice-coffee-dried fruit',
+        'Deepens in color 顏色變深,Becomes dark gold/amber變成深金黃色/琥珀色,Volumn decreases 容量減少,Acquires bouquet增添醇香,Baked apple-caramel-spice-wet wool',
+        'Constant temperature恆溫,Humidity濕度,Low Light避光,No movement避震',
+        'Traditional 傳統發酵法,Transfer 轉移發酵法,Tank 大槽發酵法,Carbonation 二氧化碳注入法',
+        'First fermentation 第一次發酵,Assemblage 調配,Tirage加糖跟酵母,Bottling裝瓶,Second fermentation 二次發酵,Aging 熟成,Remuage 轉瓶,Degorgement除渣,Dosage補液',
+        '澄清葡萄酒,將死酵母聚集到瓶頸',
+        '年份-無年份-年份-特級佳釀,顏色-白中白-黑中白-粉紅,甜度-7 or 8種',
+        '西班牙 Cava, 義大利 Franciacorta',
+        '轉移不用除渣跟轉瓶',
+        '波特法-發酵過程添加烈酒-殺死酵母-很高殘糖,雪莉法-發酵成dry才加烈酒',
+        '地理位置-Portugal-Douro Valley,氣候-非常乾燥-多變,土壤-片岩,品種-很多-最有名是Touriga Nacional國產多瑞加',
+        '寶石紅波特,年份波特,晚裝瓶年份波特,茶色波特-Tawny,true Tawny, Colheita 寇黑塔波特-有年份的茶色波特',
+        '地理位置-西班牙西南,氣候-乾燥炎熱,土壤-叫做阿爾巴尼沙的白堊土,葡萄品種-只有幾種-Palomino,釀造-大桶-Solera System,有酒花-Flor',
+        'Fino-有酒花,Oloroso-加烈酒殺死酵母-無酒花',
+        'Solera System',
+        'AOC',
+        'DOCG-DOC,based on AOC',
+        'DO-DOCa,類似AOC,DOC',
+        'Qmp-以採摘時的糖分分級,Kabinett-Spatlese-Auslese,Beerenausiese-Eiswein,Trockenbeerenauslese'
+    ];
+
+    chooseOne(0);
+
+    $("#next").click(function(){
+        chooseOne(currentIdx+1);
+    });
+    $("#prev").click(function(){
+        chooseOne(currentIdx-1);
+    });
+    $("#random").click(function(){
+        chooseOne(-2);
+    });
+    $("#hide").click(function(){
+        hide();
+    });
+
+
+    function chooseOne(idx){
+        if (idx == -2){
+            idx = getRandomInt(0, question.length-1);
+        } else if (idx > question.length-1){
+            idx = 0;
+        } else if (idx == -1){
+            idx = question.length-1;
+        }
+        currentIdx = idx;
+        $("#question").html(question[idx]);
+        $("#question_id").html(idx+1);
+		//$("#answer").html(answer[idx]);
+		
+		//answer
+		$("#answer").children('li').remove();
+		var answerList = answer[idx];
+        var answerObj = answerList.split(",");
+        console.log(answerObj);
+        for(i=0;i<answerObj.length;i++){
+            $("#answer").append("<li>"+answerObj[i]+"</li>");
+        }
+		
+
+    }
+
+    function hide(){
+        alert("not yet");
+    }
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+</script>
+
+</body>
+</html>

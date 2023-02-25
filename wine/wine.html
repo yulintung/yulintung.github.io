@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>基本葡萄類型</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        font.highlight{
+            font-weight:bold;
+            color: #990000;
+        }
+    </style>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	<script src="data.js"></script>
+</head>
+<body>
+
+<div class="row">
+</div>
+<div class="container">
+    <div class="jumbotron mt-3">
+        <h2 id="wine_label"></h2> <span id="wine_id" />
+    </div>
+    <div id="att0" class="jumbotron mt-3">
+        <h3>Vinyard</h3>
+        <ul id="vinyard">
+        </ul>
+    </div>
+
+    <div id="att1" class="jumbotron mt-3">
+        <h3>Winary</h3>
+        <ul id="winary">
+            <!--<li>fermentation 發酵</li>
+            <li>aging 熟成</li>
+            <li>cellaring 窖藏</li>-->
+        </ul>
+    </div>
+
+    <div id="att2" class="jumbotron mt-3">
+        <h3>Notable Regions</h3>
+        <ul id="region"></ul>
+    </div>
+
+    <!-- <div id="att3" class="jumbotron mt-3">
+        <h3>Glass and Mouth</h3>
+        <ul>
+            <li>appearance 外觀</li>
+            <li>nose 氣味</li>
+            <li>palate 口感</li>
+            <li>food paring 食物搭配</li>
+        </ul>
+    </div> -->
+</div>
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" id="next">Next</a>
+    <a class="navbar-brand" href="#" id="prev">Prev</a>
+    <a class="navbar-brand" href="#" id="random">Random</a>
+    <!-- <a class="navbar-brand" href="#" id="hide">Hide</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="wine.html">葡萄</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine2.html">問答</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine3.html">語言</a>
+          </li>
+		   <li class="nav-item">
+            <a class="nav-link" href="search.html">搜尋</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="summary.html">摘要</a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<script>
+    var currentIdx = 0;
+
+    
+    chooseOne(0);
+
+    $("#next").click(function(){
+        chooseOne(currentIdx+1);
+    });
+    $("#prev").click(function(){
+        chooseOne(currentIdx-1);
+    });
+    $("#random").click(function(){
+        chooseOne(-2);
+    });
+    $("#hide").click(function(){
+        hide();
+    });
+
+
+    function chooseOne(idx){
+        if (idx == -2){
+            idx = getRandomInt(0, wine.length-1);
+        } else if (idx > wine.length-1){
+            idx = 0;
+        } else if (idx == -1){
+            idx = wine.length-1;
+        }
+        currentIdx = idx;
+        // var attr_idx = getRandomInt(0, 3);
+        // $("#att1,#att3").hide();
+        //$("#att2").show();
+        $("#wine_label").html(wine[idx]);
+        $("#wine_id").html(idx+1);
+
+        //region
+        $("#region").children('li').remove();
+        var regionList = region[idx];
+        console.log(regionList);
+        var regionObj = regionList.split(",");
+        console.log(regionObj);
+        for(i=0;i<regionObj.length;i++){
+            $("#region").append("<li>"+regionObj[i]+"</li>");
+        }
+
+        //vinyard
+        $("#vinyard").children('li').remove();
+        var vinyardList = vinyardCont[idx];
+        // console.log(vinyardList);
+        var vinObj = vinyardList.split(",");
+        // console.log(vinObj);
+
+        $("#vinyard").append("<li><font style='color:#888888'>feature 葡萄特徵:</font><br />"+vinObj[0]+"</li>");
+        $("#vinyard").append("<li><font style='color:#888888'>susceptibility 容易感染:</font><br />"+vinObj[1]+"</li>");
+        $("#vinyard").append("<li><font style='color:#888888'>climate 氣候:</font><br />"+vinObj[2]+"</li>");
+        $("#vinyard").append("<li><font style='color:#888888'>soil 土壤:</font><br />"+vinObj[3]+"</li>");
+
+        //winary
+        $("#winary").children('li').remove();
+        var winaryList = winary[idx];
+        // console.log(vinyardList);
+        var winObj = winaryList.split(",");
+        console.log(winObj);
+
+        $("#winary").append("<li><font style='color:#888888'>fermentation 發酵:</font><br />"+winObj[0]+"</li>");
+        $("#winary").append("<li><font style='color:#888888'>aging 熟成:</font><br />"+winObj[1]+"</li>");
+        $("#winary").append("<li><font style='color:#888888'>cellaring 窖藏:</font><br />"+winObj[2]+"</li>");
+
+        /*
+        for(i=0;i<vinObj.length;i++){
+            $("#vinyard").append("<li>"+vinObj[i]+"</li>");
+        }
+        */
+
+    }
+
+    function hide(){
+        alert("not yet");
+    }
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+</script>
+
+</body>
+</html>
