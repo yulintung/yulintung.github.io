@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Summary</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+        font.highlight{
+            font-weight:bold;
+            color: #990000;
+        }
+    </style>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	<script src="data.js"></script>
+</head>
+<body>
+
+<div class="row">
+</div>
+<div class="container">
+    <div class="jumbotron mt-3">
+        <h2>Summary</h2>
+    </div>
+    <div id="att0" class="jumbotron mt-3">
+        <div id="thin"><b>果皮薄</b></div>
+		<div id="thick"><b>果皮厚</b> </div>
+		<div id="loose"><b>鬆散</b> </div>
+		<div id="compact"><b>緊湊</b> </div>
+		<br />
+		<div id="frost"><b>霜害</b> </div>
+		<div id="coulure"><b>落果</b> </div>
+		<div id="flourish"><b>茂盛</b> </div>
+		<br />
+		<div id="grow1"><b>萌芽早-早熟</b> </div>
+		<div id="grow2"><b>萌芽早-晚熟</b> </div>
+		<div id="grow3"><b>萌芽晚-早熟</b> </div>
+		<div id="grow4"><b>萌芽晚-晚熟</b> </div>
+		<br />
+		<div id="clay"><b>黏土</b> </div>
+		<div id="limestone"><b>石灰</b> </div>
+		
+		
+    </div>
+</div>
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <!-- <a class="navbar-brand" href="#" id="hide">Hide</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="wine.html">葡萄</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine2.html">問答</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine3.html">語言</a>
+          </li>
+		   <li class="nav-item">
+            <a class="nav-link" href="search.html">搜尋</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="summary.html">摘要</a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<script>
+    
+	run();
+	
+	function run(){
+		
+		for(i=0;i<vinyardCont.length;i++){
+			var char = vinyardCont[i];
+			if (char.indexOf('皮薄') > -1){
+				$("#thin").append(wine[i]+",");
+			}
+			if (char.indexOf('皮厚') > -1){
+				$("#thick").append(wine[i]+",");
+			}
+			if (char.indexOf('萌芽早-早熟') > -1){
+				$("#grow1").append(wine[i]+",");
+			}
+			if (char.indexOf('萌芽早-晚熟') > -1){
+				$("#grow2").append(wine[i]+",");
+			}
+			if (char.indexOf('萌芽晚-早熟') > -1){
+				$("#grow3").append(wine[i]+",");
+			}
+			if (char.indexOf('萌芽晚-晚熟') > -1){
+				$("#grow4").append(wine[i]+",");
+			}
+			if (char.indexOf('鬆散') > -1){
+				$("#loose").append(wine[i]+",");
+			}
+			if (char.indexOf('緊湊') > -1){
+				$("#compact").append(wine[i]+",");
+			}
+			if (char.indexOf('霜害') > -1){
+				$("#frost").append(wine[i]+",");
+			}
+			if (char.indexOf('落果') > -1){
+				$("#coulure").append(wine[i]+",");
+			}
+			if (char.indexOf('茂盛') > -1){
+				$("#flourish").append(wine[i]+",");
+			}
+			if (char.indexOf('黏土') > -1){
+				$("#clay").append(wine[i]+",");
+			}
+			if (char.indexOf('石灰') > -1){
+				$("#limestone").append(wine[i]+",");
+			}
+			
+        }
+	}
+	
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+</script>
+
+</body>
+</html>

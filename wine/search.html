@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css">	
+    <style>
+        font.highlight{
+            font-weight:bold;
+            color: #990000;
+        }
+    </style>
+    <!-- jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	
+	<script src="data.js"></script>
+</head>
+<body>
+
+<div class="row">
+</div>
+<div class="container">
+    <div class="jumbotron mt-3">
+        <h2>Search</h2>
+		<input id="keyword" type="text" /> <input id="click" type="button" value="click" />
+    </div>
+    <div id="att0" class="jumbotron mt-3">
+        <div id="result"></div>
+    </div>
+</div>
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <!-- <a class="navbar-brand" href="#" id="hide">Hide</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="wine.html">葡萄</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine2.html">問答</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="wine3.html">語言</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="search.html">搜尋</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="summary.html">摘要</a>
+          </li>
+        </ul>
+      </div>
+</nav>
+
+<script>
+	 var availableTags = [
+	 "萌芽早-早熟",
+"萌芽早-晚熟",
+"萌芽晚-早熟",
+"萌芽晚-晚熟",
+"果皮薄",
+"果皮厚",
+"鬆散",
+"緊湊",
+"黏土",
+"石灰",
+"茂盛",
+"霜害",
+"落果",
+"乾燥",
+"沖積土",
+"白粉黴",
+"抵抗力強",
+"溫暖"
+	 ];
+	$("#keyword").autocomplete({
+      source: availableTags
+    });
+
+	$("#click").click(function(){
+		$("#result").html("");
+		var word = $("#keyword").val();
+		console.log(word);
+		for(i=0;i<vinyardCont.length;i++){
+			var char = vinyardCont[i];
+			if (char.indexOf(word) > -1){
+				$("#result").append(wine[i]+",");
+			}
+        }
+	});
+	
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+</script>
+
+</body>
+</html>
