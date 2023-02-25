@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="data.js"></script>
+    <script src="data.js"></script>
 </head>
 <body>
     <div class="container">
@@ -18,47 +19,49 @@
     </div>
     <script>
         $(document).ready(function() {
-            /*$.getJSON('words.json', function(json) {
-                $.each(JSON.parse(json), function (index, data) {
-                    console.log('1');
-                });
-            });*/
+           
             $("img#correct").hide();
             $("img#incorrect").hide();
             
-            var wordArray = JSON.parse(jsondata);
-            var order = getRandomNumber(4, wordArray.length);
-            console.log(order);
+            var res = $.getJSON("https://yulintung.github.io/word_choice/words_21_30.json", function(data){
+                var wordArray = data.length;
+                var order = getRandomNumber(4, wordArray.length);
+                console.log(order);
 
-            console.log(wordArray.length);
-            console.log(wordArray[order[0]]);
-            console.log(wordArray[order[1]]);
-            console.log(wordArray[order[2]]);
-            console.log(wordArray[order[3]]);
+                console.log(wordArray.length);
+                console.log(wordArray[order[0]]);
+                console.log(wordArray[order[1]]);
+                console.log(wordArray[order[2]]);
+                console.log(wordArray[order[3]]);
 
-            var correct = getRandomNumber(1,4);
-            console.log(correct);
-            $("#qq").html('<h4>'+wordArray[order[correct]].kor+'</h4>');
-            $("#list").html(
-                '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].cht+"<a>"+
-                '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].cht+"<a>"+
-                '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].cht+"<a>"+
-                '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].cht+"<a>"
-            );
-            $("#list > a").click(function(obj){
-                //console.log(this.id);
-                //console.log('opt'+correct);
-                if (this.id == 'opt'+correct) {
-                    $("img#correct").show();
-                    $("img#incorrect").hide();
-                } else {
-                    $("img#incorrect").show();
-                    $("img#correct").hide();
-                }
+                var correct = getRandomNumber(1,4);
+                console.log(correct);
+                $("#qq").html('<h4>'+wordArray[order[correct]].kor+'</h4>');
+                $("#list").html(
+                    '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].cht+"<a>"+
+                    '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].cht+"<a>"+
+                    '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].cht+"<a>"+
+                    '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].cht+"<a>"
+                );
+                $("#list > a").click(function(obj){
+                    //console.log(this.id);
+                    //console.log('opt'+correct);
+                    if (this.id == 'opt'+correct) {
+                        $("img#correct").show();
+                        $("img#incorrect").hide();
+                    } else {
+                        $("img#incorrect").show();
+                        $("img#correct").hide();
+                    }
+                });
+                
+            }).fail(function(){
+                console.log("An error has occurred.");
             });
-            /*$.each(, function (index, data) {
-                console.log(index, data);
-            });*/
+
+            //var wordArray = JSON.parse(jsondata);
+            
+            
         });
         var getRandomNumber = function(size, totalSize){
             var str='';
@@ -75,8 +78,6 @@
             }
             return arr;
         };
-        //var jsondata = $.getJSON('words.json');
-        var jsondata = '[{"c":"26","kor":"선생님","cht":"老師"},{"c":"26","kor":"질문","cht":"問題"},{"c":"26","kor":"저희","cht":"我們"},{"c":"26","kor":"방학","cht":"學校放假"},{"c":"26","kor":"때","cht":"的時候"},{"c":"26","kor":"나와요","cht":"出來"},{"c":"26","kor":"고3은","cht":"高三"},{"c":"26","kor":"도시락","cht":"便當"},{"c":"26","kor":"싸","cht":"包"},{"c":"26","kor":"와요","cht":"來"},{"c":"26","kor":"다시","cht":"又 再"},{"c":"26","kor":"들어와요","cht":"進來f"},{"c":"26","kor":"땡땡이","cht":"逃課"},{"c":"26","kor":"안 돼요","cht":"不對喔"},{"c":"26","kor":"그만","cht":"停止"},{"c":"26","kor":"수압","cht":"上課"},{"c":"26","kor":"시작할게요","cht":"開始"},{"c":"27","kor":"시험 보다","cht":"參加考試"},{"c":"27","kor":"완전히","cht":"完全地 徹底地"},{"c":"27","kor":"망쳤어","cht":"弄壞了 搞砸了"},{"c":"27","kor":"다행이다","cht":"幸好"},{"c":"27","kor":"틀렸어","cht":"錯誤"},{"c":"27","kor":"맞았어","cht":"對了 沒錯"},{"c":"27","kor":"그래서","cht":"所以"},{"c":"27","kor":"백 점","cht":"一百分"},{"c":"27","kor":"맞고 싶어","cht":"想被打"},{"c":"27","kor":"다음","cht":"下一個"},{"c":"27","kor":"간다","cht":"去"},{"c":"28","kor":"메뉴판","cht":"菜單"},{"c":"28","kor":"덜","cht":"不太"},{"c":"28","kor":"주방","cht":"廚房"},{"c":"28","kor":"물어볼게요","cht":"問問看"},{"c":"29","kor":"영수증","cht":"收據"},{"c":"29","kor":"드릴까요","cht":"需要嗎"},{"c":"29","kor":"진동벨","cht":"震動鈴"},{"c":"29","kor":"가져가세요","cht":"帶走"},{"c":"29","kor":"죄송해요","cht":"抱歉"},{"c":"29","kor":"바꿔","cht":"換成"},{"c":"29","kor":"더 비싸요","cht":"更貴"},{"c":"29","kor":"취소하","cht":"取消"},{"c":"29","kor":"결제해야","cht":"結算"},{"c":"29","kor":"할까요","cht":"要不要做"},{"c":"29","kor":"따뜻한","cht":"溫暖"},{"c":"29","kor":"잠깐만","cht":"等一下"},{"c":"29","kor":"기다리세요","cht":"等待"},{"c":"30","kor":"들어와","cht":"進來"},{"c":"30","kor":"그래","cht":"是嗎"},{"c":"30","kor":"다른","cht":"不同"},{"c":"30","kor":"애들은","cht":"其他朋友們"},{"c":"30","kor":"올 거야","cht":"將會來"},{"c":"30","kor":"슈퍼","cht":"超市"},{"c":"30","kor":"다","cht":"一切 全部"},{"c":"30","kor":"만들었어","cht":"做的"},{"c":"30","kor":"멋지다 멋져","cht":"好酷"},{"c":"30","kor":"인테리어","cht":"裝潢"},{"c":"30","kor":"음식","cht":"食物"},{"c":"30","kor":"집들이","cht":"喬遷宴"},{"c":"30","kor":"치음이야","cht":"第一次"},{"c":"30","kor":"다행이다","cht":"幸好"},{"c":"30","kor":"배고프지","cht":"肚子餓"},{"c":"30","kor":"먼저 먹을래","cht":"要不要先吃"}]';
     </script>
 </body>
 </html>
