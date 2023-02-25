@@ -8,12 +8,16 @@
 <body>
     <script>
     $(document).ready(function(){
-        $.getJSON("words_21_30.json", function(data){
-            console.log(data.kor); // Prints: Harry
-            console.log(data.cht); // Prints: 14
+        var json = $.getJSON("words_21_30.json", function(data){
+            return data;           
         }).fail(function(){
             console.log("An error has occurred.");
         });
+        
+        $.each(json, function (index, data) {
+                console.log(data.kor); 
+                console.log(data.cht);
+            });
     });
     </script> 
 </body>
