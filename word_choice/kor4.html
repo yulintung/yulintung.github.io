@@ -42,6 +42,11 @@
                         if (this.id == 'opt'+correct) {
                             $("img#correct").show();
                             $("img#incorrect").hide();
+                            wordArray.splice(order[correct],1);
+                            console.log(wordArray.length);
+                            if (wordArray.length < 4) {
+                                alert('completed!');
+                            }
                         } else {
                             $("img#incorrect").show();
                             $("img#correct").hide();
