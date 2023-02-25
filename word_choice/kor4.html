@@ -13,52 +13,50 @@
         <div id="list" class="list-group"></div>
         <img id="correct" src="correct.png" />
         <img id="incorrect" src="incorrect.png" />
-        <input class="btn btn-primary" type="reset" value="Next" onclick="location.reload()" />
+        <input class="btn btn-primary" id="next" type="reset" value="Next" />
     </div>
     <script>
         $(document).ready(function() {
-           
-            $("img#correct").hide();
-            $("img#incorrect").hide();
-            
-            var res = $.getJSON("https://yulintung.github.io/word_choice/words_31_40.json", function(wordArray){
-                var order = getRandomNumber(4, wordArray.length);
-                console.log(order);
-
-                console.log(wordArray.length);
-                console.log(wordArray[order[0]]);
-                console.log(wordArray[order[1]]);
-                console.log(wordArray[order[2]]);
-                console.log(wordArray[order[3]]);
-
-                var correct = getRandomNumber(1,4);
-                console.log(correct);
-                $("#qq").html('<h4>'+wordArray[order[correct]].kor+'</h4>');
-                $("#list").html(
-                    '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].cht+"<a>"+
-                    '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].cht+"<a>"+
-                    '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].cht+"<a>"+
-                    '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].cht+"<a>"
-                );
-                $("#list > a").click(function(obj){
-                    //console.log(this.id);
-                    //console.log('opt'+correct);
-                    if (this.id == 'opt'+correct) {
-                        $("img#correct").show();
-                        $("img#incorrect").hide();
-                    } else {
-                        $("img#incorrect").show();
-                        $("img#correct").hide();
-                    }
+                     
+            var res = $.getJSON("https://yulintung.github.io/word_choice/words_31_40.json", function(wordArray){                             
+                var getQuestion = function(){
+                    $("img#correct").hide();
+                    $("img#incorrect").hide();
+                    var order = getRandomNumber(4, wordArray.length);
+                    console.log(order);
+                    /*console.log(wordArray.length);
+                    console.log(wordArray[order[0]]);
+                    console.log(wordArray[order[1]]);
+                    console.log(wordArray[order[2]]);
+                    console.log(wordArray[order[3]]);*/
+                    var correct = getRandomNumber(1,4);
+                    console.log(correct);
+                    $("#qq").html('<h4>'+wordArray[order[correct]].kor+'</h4>');
+                    $("#list").html(
+                        '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].cht+"<a>"+
+                        '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].cht+"<a>"+
+                        '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].cht+"<a>"+
+                        '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].cht+"<a>"
+                    );
+                    $("#list > a").click(function(obj){                   
+                        if (this.id == 'opt'+correct) {
+                            $("img#correct").show();
+                            $("img#incorrect").hide();
+                        } else {
+                            $("img#incorrect").show();
+                            $("img#correct").hide();
+                        }
+                    });
+                }
+                getQuestion();
+                $("#next").click(function(){
+                    getQuestion();
                 });
+                
                 
             }).fail(function(){
                 console.log("An error has occurred.");
             });
-
-            //var wordArray = JSON.parse(jsondata);
-            
-            
         });
         var getRandomNumber = function(size, totalSize){
             var str='';
