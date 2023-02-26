@@ -8,12 +8,27 @@
 </head>
 <body>
     <div class="container">
-        <div style="height:100px"></div>
+        <div style="height:100px">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="langOpt" id="kor" checked>
+                <label class="form-check-label" for="kor">
+                  韓文
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="langOpt" id="cht">
+                <label class="form-check-label" for="cht">
+                  中文
+                </label>
+              </div>
+        </div>
         <div id="qq"></div>
         <div id="list" class="list-group"></div>
         <img id="correct" src="correct.png" />
         <img id="incorrect" src="incorrect.png" />
         <input class="btn btn-primary" id="next" type="reset" value="Next" />
+        
+        
     </div>
     <nav class="navbar fixed-bottom navbar-expand-sm" style="background-color: #e3f2fd;">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +53,8 @@
     </nav>
     <script>
         $(document).ready(function() {
+            var langOpt = 'kor'; //default Korean
+            console.log($('input[name="langOpt"]:checked').prop("id"));
                      
             var res = $.getJSON("https://yulintung.github.io/word_choice/words_31_40.json", function(wordArray){                             
                 var getQuestion = function(){
@@ -52,13 +69,25 @@
                     console.log(wordArray[order[3]]);*/
                     var correct = getRandomNumber(1,4);
                     console.log(correct);
-                    $("#qq").html('<h4>'+wordArray[order[correct]].kor+'</h4>');
-                    $("#list").html(
-                        '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].cht+"<a>"+
-                        '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].cht+"<a>"+
-                        '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].cht+"<a>"+
-                        '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].cht+"<a>"
-                    );
+
+                    if (langOpt == 'kor') {
+                        $("#qq").html('<h4>'+wordArray[order[correct]].kor+'</h4>');
+                        $("#list").html(
+                            '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].cht+"<a>"+
+                            '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].cht+"<a>"+
+                            '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].cht+"<a>"+
+                            '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].cht+"<a>"
+                        );
+                    } else if (langOpt == 'cht') {
+                        $("#qq").html('<h4>'+wordArray[order[correct]].cht+'</h4>');
+                        $("#list").html(
+                            '<a href="#" id="opt0" class="list-group-item list-group-item-action">'+wordArray[order[0]].kor+"<a>"+
+                            '<a href="#" id="opt1" class="list-group-item list-group-item-action">'+wordArray[order[1]].kor+"<a>"+
+                            '<a href="#" id="opt2" class="list-group-item list-group-item-action">'+wordArray[order[2]].kor+"<a>"+
+                            '<a href="#" id="opt3" class="list-group-item list-group-item-action">'+wordArray[order[3]].kor+"<a>"
+                        );
+                    }
+                   
                     $("#list > a").click(function(obj){                   
                         if (this.id == 'opt'+correct) {
                             $("img#correct").show();
@@ -79,6 +108,11 @@
                     getQuestion();
                 });
                 
+                $('input[name="langOpt"]').change(function(){
+                    console.log("change to "+this.id);
+                    langOpt = this.id;
+                    getQuestion();
+                });
                 
             }).fail(function(){
                 console.log("An error has occurred.");
