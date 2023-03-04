@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game</title>
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eee;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        /* Game styles */
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .game-container div {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 10px;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease-in-out;
+        }
+        .game-container div:hover {
+            transform: scale(1.1);
+        }
+        /* Media queries */
+        @media (min-width: 768px) {
+            .game-container div {
+                width: 150px;
+                height: 150px;
+                font-size: 80px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Slot Game</h1>
+    <div class="game-container">
+        <div id="slot-1">?</div>
+        <div id="slot-2">?</div>
+        <div id="slot-3">?</div>
+    </div>
+    <script>
+        // Slot game logic
+        const slots = [
+            "🍇", "🍉", "🍊", "🍌", "🍓"
+        ];
+        const randomSlot = () => slots[Math.floor(Math.random() * slots.length)];
+        const slot1 = document.getElementById("slot-1");
+        const slot2 = document.getElementById("slot-2");
+        const slot3 = document.getElementById("slot-3");
+        const spinSlots = () => {
+            slot1.textContent = randomSlot();
+            slot2.textContent = randomSlot();
+            slot3.textContent = randomSlot();
+        }
+        setInterval(spinSlots, 100);
+    </script>
+</body>
+</html>
