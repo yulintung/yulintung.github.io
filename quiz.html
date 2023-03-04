@@ -99,4 +99,74 @@
 				"choices": ["Elephant", "Giraffe", "Hippopotamus", "Blue Whale"],
 				"correctAnswer": "Blue Whale"
 			}
-		
+				];
+
+	// Shuffle quiz data
+	quizData.sort(function() { return 0.5 - Math.random(); });
+
+	// Initialize variables
+	var currentQuestion = 0;
+	var correctAnswers = 0;
+	var quizForm = document.querySelector('form');
+	var questionTitle = document.getElementById('question');
+	var choicesList = document.getElementById('choices');
+
+	// Load the first question
+	loadQuestion();
+
+	// Define function to load a new question
+	function loadQuestion() {
+		questionTitle.textContent = quizData[currentQuestion].question;
+		choicesList.innerHTML = '';
+		for (var i = 0; i < quizData[currentQuestion].choices.length; i++) {
+			var li = document.createElement('li');
+			var input = document.createElement('input');
+			input.type = 'radio';
+			input.id = 'choice' + i;
+			input.name = 'choice';
+			input.value = quizData[currentQuestion].choices[i];
+			var label = document.createElement('label');
+			label.htmlFor = 'choice' + i;
+			label.textContent = quizData[currentQuestion].choices[i];
+			li.appendChild(input);
+			li.appendChild(label);
+			choicesList.appendChild(li);
+		}
+	}
+
+	// Define function to check the answer
+	function checkAnswer() {
+		var choices = document.getElementsByName('choice');
+		for (var i = 0; i < choices.length; i++) {
+			if (choices[i].checked) {
+				if (choices[i].value === quizData[currentQuestion].correctAnswer) {
+					correctAnswers++;
+				}
+				currentQuestion++;
+				if (currentQuestion < quizData.length) {
+					loadQuestion();
+				} else {
+					showResults();
+				}
+				break;
+			}
+		}
+	}
+
+	// Define function to show the quiz results
+	function showResults() {
+		var message = 'You got ' + correctAnswers + ' out of ' + quizData.length + ' questions correct!';
+		alert(message);
+		currentQuestion = 0;
+		correctAnswers = 0;
+		loadQuestion();
+	}
+
+	// Add event listener to the form submission
+	quizForm.addEventListener('submit', function(event) {
+		event.preventDefault();
+		checkAnswer();
+	});
+</script>
+</body>
+</html>
