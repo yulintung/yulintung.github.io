@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML5 Slot Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+        font-family: Arial, sans-serif;
+      }
+
+      #game-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .slot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+      }
+
+      .slot:hover {
+        transform: scale(1.1);
+      }
+
+      .slot img {
+        width: 80%;
+        height: auto;
+      }
+
+      #spin-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      #spin-button:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container"></div>
+
+    <button id="spin-button" onclick="spin()">Spin</button>
+
+    <script>
+      const items = [
+        "cherry.png",
+        "lemon.png",
+        "orange.png",
+        "plum.png",
+        "bell.png",
+        "bar.png",
+        "seven.png",
+      ];
+
+      const gameContainer = document.getElementById("game-container");
+
+      for (let i = 0; i < 9; i++) {
+        const randomItem = items[Math.floor(Math.random() * items.length)];
+        const slot = document.createElement("div");
+        slot.classList.add("slot");
+        const img = document.createElement("img");
+        img.src = randomItem;
+        slot.appendChild(img);
+        gameContainer.appendChild(slot);
+      }
+
+      function spin() {
+        const slots = document.querySelectorAll(".slot");
+        slots.forEach((slot) => {
+          const randomItem = items[Math.floor(Math.random() * items.length)];
+          const img = slot.querySelector("img");
+          img.src = randomItem;
+        });
+      }
+    </script>
+  </body>
+</html>
