@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Multiple Choice Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+		.section {
+			margin-bottom: 40px;
+		}
+		h1, h2 {
+			margin-top: 0;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		li {
+			margin: 10px 0;
+		}
+		input[type="submit"] {
+			background-color: #ff6f61;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			border-radius: 5px;
+			font-size: 16px;
+			transition: background-color 0.3s ease;
+		}
+		input[type="submit"]:hover {
+			background-color: #ff584f;
+		}
+		@media only screen and (max-width: 600px) {
+			.container {
+				max-width: 100%;
+				padding: 10px;
+			}
+			.section {
+				margin-bottom: 20px;
+			}
+			h1 {
+				font-size: 24px;
+			}
+			h2 {
+				font-size: 20px;
+			}
+			input[type="submit"] {
+				font-size: 14px;
+				padding: 8px 16px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<section class="section">
+			<h1>Multiple Choice Quiz</h1>
+			<form action="#" method="post">
+				<div class="question">
+					<h2 id="question"></h2>
+					<ul id="choices"></ul>
+				</div>
+				<input type="submit" value="Submit">
+			</form>
+		</section>
+	</div>
+	<script>
+		// Define quiz data as a JSON object
+		var quizData = [
+			{
+				"question": "What is the capital city of France?",
+				"choices": ["Berlin", "London", "Paris", "Madrid"],
+				"correctAnswer": "Paris"
+			},
+			{
+				"question": "What is the largest country in the world by land area?",
+				"choices": ["Russia", "Canada", "China", "United States"],
+				"correctAnswer": "Russia"
+			},
+			{
+				"question": "Which planet in our solar system is known as the Red Planet?",
+				"choices": ["Venus", "Mars", "Jupiter", "Saturn"],
+				"correctAnswer": "Mars"
+			},
+			{
+				"question": "What is the largest mammal in the world?",
+				"choices": ["Elephant", "Giraffe", "Hippopotamus", "Blue Whale"],
+				"correctAnswer": "Blue Whale"
+			}
+		
