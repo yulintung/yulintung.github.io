@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+        
+        .slot {
+            display: flex;
+            flex-wrap: wrap;
+            width: 50%;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slot__item {
+            flex: 1 0 33.33%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        .slot__item--spin {
+            animation: spin 2s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotateX(0);
+            }
+            100% {
+                transform: rotateX(360deg);
+            }
+        }
+        
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2196f3;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slot">
+        <div class="slot__item"></div>
+        <div class="slot__item"></div>
+        <div class="slot__item"></div>
+        <div class="slot__item"></div>
+        <div class="slot__item"></div>
+        <div class="slot__item"></div>
+        <div class="slot__item"></div>
+    </div>
+    <button id="spin">Spin</button>
+    <script>
+        const slotItems = document.querySelectorAll('.slot__item');
+        const spinButton = document.querySelector('#spin');
+        const symbols = ['🍇', '🍓', '🍒', '🍊', '🍋', '🍉', '🍌'];
+        let isSpinning = false;
+        
+        spinButton.addEventListener('click', () => {
+            if (!isSpinning) {
+                isSpinning = true;
+                spinButton.textContent = 'Stop';
+                slotItems.forEach(item => {
+                    item.classList.add('slot__item--spin');
+                    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                });
+            } else {
+                isSpinning = false;
+                spinButton.textContent = 'Spin';
+                slotItems.forEach(item => item.classList.remove('slot__item--spin'));
+            }
+        });
+    </script>
+</body>
+</html>
