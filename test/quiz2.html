@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>單字選擇測驗</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>單字選擇測驗</h1>
+    <div id="question"></div>
+    <div id="choices"></div>
+    <button id="submit">提交答案</button>
+    <div id="result"></div>
+
+    <script>
+        // 讀取單字列表
+        $.getJSON("words_1_10.json", function (data) {
+            //var words = data.words;
+            var words = data;
+            var questions = [];
+            var numCorrect = 0;
+            var numWrong = 0;
+            var wrongQuestions = [];
+
+            // 建立問題列表
+            for (var i = 0; i < words.length; i++) {
+                var question = {};
+                question.kor = words[i].kor;
+                question.answer = words[i].cht;
+                question.choices = [];
+
+                // 從單字中隨機選出三個選項
+                var indices = [i];
+                while (indices.length < 4) {
+                    var index = Math.floor(Math.random() * words.length);
+                    if (indices.indexOf(index) == -1) {
+                        indices.push(index);
+                    }
+                }
+
+                // 將答案和選項放在一起
+                for (var j = 0; j < indices.length; j++) {
+                    var index = indices[j];
+                    if (index == i) {
+                        question.choices.push(words[index].cht);
+                    } else {
+                        question.choices.push(words[index].cht);
+                    }
+                }
+
+                questions.push(question);
+            }
+
+            // 顯示第一個問題
+            showQuestion(0);
+
+            // 當按下提交按鈕時，檢查答案
+            $("#submit").click(function () {
+                var index = $("input[type='radio']:checked").val();
+                var answer = questions[numCorrect + numWrong].choices[index];
+                if (answer == questions[numCorrect + numWrong].answer) {
+                    numCorrect++;
+                } else {
+                    numWrong++;
+                    wrongQuestions.push(questions[numCorrect + numWrong - 1]);
+                }
+
+                if (numCorrect + numWrong == questions.length) {
+                    showResult();
+                } else {
+                    showQuestion(numCorrect + numWrong);
+                }
+            });
+
+            // 顯示問題
+            function showQuestion(index) {
+                var question = questions[index];
+
+                $("#question").text(question.kor);
+
+                $("#choices").empty();
+                for (var i = 0; i < question.choices.length; i++) {
+                    var label = $("<label></label>").text(question.choices[i]);
+                    var radio = $("<input type='radio' name='choice' value='" + i + "'>");
+                    label.prepend(radio);
+                    $("#choices").append(label);
+                }
+            }
+
+            // 顯示結果
+            function showResult() {
+                var message = "你答對了 " + numCorrect + " 題，答錯了 " + numWrong + " 題。";
+                if (numWrong > 0) {
+                    message += "<br><br>答錯的題目是：<ul>";
+                    for (var i = 0; i < wrongQuestions.length; i++) {
+                        message += "<li>" + wrongQuestions[i].kor + "（正確答案：" + wrongQuestions[i].answer + "）</li>";
+                    }
+                    message += "</ul>";
+                }
+                $("#result").html(message);
+            }
+        });
+    </script>
+</body>
+
+</html>

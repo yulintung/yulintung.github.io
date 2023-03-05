@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>單字測驗</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    p {
+      font-size: 16px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+    .question {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    .choice {
+      display: block;
+      margin-bottom: 8px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #f2f2f2;
+      cursor: pointer;
+    }
+    .choice:hover {
+      background-color: #e0e0e0;
+    }
+    .correct {
+      background-color: #a0e0a0 !important;
+    }
+    .incorrect {
+      background-color: #e0a0a0 !important;
+    }
+    #submit-button {
+      margin-top: 16px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    #submit-button:hover {
+      background-color: #3e8e41;
+    }
+    #submit-button:disabled {
+      background-color: #999;
+      cursor: default;
+    }
+    #score-container {
+      margin-top: 16px;
+    }
+    #restart-button {
+      margin-top: 16px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    #restart-button:hover {
+      background-color: #3e8e41;
+    }
+    #restart-button.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>單字測驗</h1>
+  <div id="quiz-container">
+    <p id="question-num"></p>
+    <p id="question"></p>
+    <div id="choices-container">
+      <button class="choice"></button>
+      <button class="choice"></button>
+      <button class="choice"></button>
+      <button class="choice"></button>
+    </div>
+    <button id="submit-button" disabled>提交</button>
+    <div id="score-container"></div>
+    <button id="restart-button" class="hidden">重新開始</button>
+  </div>
+  <script src="quiz.js"></script>
+</body>
+</html>
