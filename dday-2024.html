@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D-Day Countdown</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+margin: 20px;
+}
+#countdown {
+font-size: 24px;
+margin-top: 20px;
+}
+</style>
+</head>
+<body>
+	<h1>D-Day Countdown</h1>
+<div id="countdown"></div>
+
+<script>
+// 設定特定日期（格式：年-月-日）
+const targetDate = new Date('2024-03-20');
+// 更新天數
+function updateCountdown() {
+    const now = new Date();
+    const timeDiff = targetDate - now;
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+    document.getElementById('countdown').innerText = `距離 D-Day 還有 ${days} 天`;
+}
+
+// 初始載入時更新一次
+updateCountdown();
+
+// 定期更新，可自行調整更新頻率
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
