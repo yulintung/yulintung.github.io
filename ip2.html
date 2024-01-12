@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Information</title>
+</head>
+<body>
+    <h1>User Geolocation Information</h1>
+    
+    <p id="latitude-info">Latitude: Loading...</p>
+    <p id="longitude-info">Longitude: Loading...</p>
+    <p id="location-info">Location: Loading...</p>
+
+    <script>
+        // Function to fetch geolocation information using navigator.geolocation
+        function fetchGeolocation() {
+            // Check if Geolocation API is supported by the browser
+            if ('geolocation' in navigator) {
+                // If supported, use Geolocation API to get accurate coordinates
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        // Display latitude information
+                        document.getElementById('latitude-info').textContent = 'Latitude: ' + position.coords.latitude;
+
+                        // Display longitude information
+                        document.getElementById('longitude-info').textContent = 'Longitude: ' + position.coords.longitude;
+
+                        // Use Nominatim to get location information (country and city)
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const address = data.address;
+                                const city = address.city || address.town || address.village || address.hamlet || 'N/A';
+                                const country = address.country || 'N/A';
+
+                                // Display location information
+                                document.getElementById('location-info').textContent = `Location: ${city}, ${country}`;
+                            })
+                            .catch(error => console.error('Error fetching location information:', error));
+                    },
+                    error => {
+                        console.error('Error getting geolocation:', error);
+                        displayError(); // Display error message if geolocation fails
+                    }
+                );
+            } else {
+                displayError(); // Display error message if Geolocation API is not supported
+            }
+        }
+
+        // Function to display error message
+        function displayError() {
+            document.getElementById('latitude-info').textContent = 'Latitude: N/A';
+            document.getElementById('longitude-info').textContent = 'Longitude: N/A';
+            document.getElementById('location-info').textContent = 'Location: N/A';
+        }
+
+        // Fetch geolocation information using navigator.geolocation
+        fetchGeolocation();
+    </script>
+</body>
+</html>
