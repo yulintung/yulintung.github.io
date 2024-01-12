@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation Information</title>
+</head>
+<body>
+    <h1>User Geolocation Information</h1>
+    
+    <p id="ip-info">IP Address: Loading...</p>
+    <p id="country-info">Country: Loading...</p>
+    <p id="city-info">City: Loading...</p>
+
+    <script>
+        // Function to fetch geolocation information
+        function fetchGeolocation() {
+            // Using ipinfo.io to get IP, country, and city information
+            fetch('https://ipinfo.io?token=YOUR_IPINFO_TOKEN')
+                .then(response => response.json())
+                .then(data => {
+                    // Display IP address
+                    document.getElementById('ip-info').textContent = 'IP Address: ' + data.ip;
+
+                    // Display country information
+                    document.getElementById('country-info').textContent = 'Country: ' + data.country;
+
+                    // Display city information
+                    document.getElementById('city-info').textContent = 'City: ' + data.city;
+                })
+                .catch(error => console.error('Error fetching geolocation information:', error));
+        }
+
+        // Check if Geolocation API is supported by the browser
+        if ('geolocation' in navigator) {
+            // If supported, use Geolocation API to get accurate coordinates (not used in this example)
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    // You can use position.coords.latitude and position.coords.longitude if needed
+                    fetchGeolocation();
+                },
+                error => {
+                    console.error('Error getting geolocation:', error);
+                    fetchGeolocation(); // Fetch geolocation information using IPinfo in case of error
+                }
+            );
+        } else {
+            // If Geolocation API is not supported, fetch geolocation information using IPinfo
+            fetchGeolocation();
+        }
+    </script>
+</body>
+</html>
