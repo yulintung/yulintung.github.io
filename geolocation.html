@@ -16,7 +16,7 @@
         // Function to fetch geolocation information
         function fetchGeolocation() {
             // Using ipinfo.io to get IP, country, and city information
-            fetch('https://ipinfo.io?token=YOUR_IPINFO_TOKEN')
+            fetch('http://ip-api.com/json')
                 .then(response => response.json())
                 .then(data => {
                     // Display IP address
