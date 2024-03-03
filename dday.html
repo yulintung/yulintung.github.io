@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒數計時器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>距離退休還有：</h1>
+    <div id="countdown"></div>
+
+    <script>
+        // 計算距離 2031 年 2 月 28 日的天數
+        function calculateDays() {
+            // 目標日期：2031 年 2 月 28 日
+            const targetDate = new Date('2031-02-28T00:00:00');
+            // 現在日期
+            const currentDate = new Date();
+
+            // 計算相差的毫秒數
+            const timeDifference = targetDate - currentDate;
+
+            // 計算相差的天數
+            const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+            return daysDifference;
+        }
+
+        // 將天數轉換成年、月、日
+        function convertDaysToYearMonthDay(days) {
+            const years = Math.floor(days / 365);
+            const remainingDays = days % 365;
+            const months = Math.floor(remainingDays / 30);
+            const daysLeft = remainingDays % 30;
+
+            return {
+                years,
+                months,
+                days: daysLeft
+            };
+        }
+
+        // 更新倒數計時器
+        function updateCountdown() {
+            const daysRemaining = calculateDays();
+            const { years, months, days } = convertDaysToYearMonthDay(daysRemaining);
+
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.innerHTML = `<p>${years} 年 ${months} 月 ${days} 天</p>`;
+        }
+
+        // 初始載入時更新一次倒數計時器
+        updateCountdown();
+    </script>
+
+</body>
+</html>
