@@ -51,10 +51,11 @@
         // 更新倒數計時器
         function updateCountdown() {
             const daysRemaining = calculateDays();
-            const { years, months, days } = convertDaysToYearMonthDay(daysRemaining);
+            //const { years, months, days } = convertDaysToYearMonthDay(daysRemaining);
 
             const countdownElement = document.getElementById('countdown');
-            countdownElement.innerHTML = `<p>${years} 年 ${months} 月 ${days} 天</p>`;
+            //countdownElement.innerHTML = `<p>${years} 年 ${months} 月 ${days} 天</p>`;
+            countdownElement.innerHTML = `${daysRemaining} 天</p>`;
         }
 
         // 初始載入時更新一次倒數計時器
