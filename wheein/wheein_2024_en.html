@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whee In The Moo 輝妮莫屬</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+    .slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .slideshow img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .slideshow img.active {
+        opacity: 1;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8); /* 深色遮罩 */
+        pointer-events: none; /* 確保遮罩不影響圖片的點擊事件 */
+    }
+    .text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    max-width: 800px; /* 最大寬度 */
+    background: rgba(255, 255, 255, 0.2); /* 半透明白色背景 */
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* 由上到下顯示內容 */
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%); /* 置中對齊 */
+    text-align: center;
+    padding: 20px; /* 內邊距 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加陰影效果 */
+    line-height: 1.5; /* 調整行距，例如設置為1.5倍行高 */
+}
+
+.text-container p {
+    margin-bottom: 20px; /* 段落間距 */
+}
+
+    .youtube-container {
+        display: flex; /* 橫向排列影片 */
+        flex-direction: row; /* 橫向排列 */
+        gap: 10px; /* 影片間距 */
+        justify-content: center; /* 置中對齊影片 */
+        flex-wrap: wrap; /* 允許換行 */
+    }
+    .youtube-container .video-item {
+        display: flex;
+        flex-direction: column; /* 由上到下顯示標題和影片 */
+        align-items: center;
+    }
+    .youtube-container .video-item h3 {
+        margin: 0 0 10px 0; /* 標題間距 */
+        color: #fff;
+    }
+    .youtube-container iframe {
+        margin: 0; /* 取消默認的邊距 */
+        max-width: 100%; /* 影片自適應寬度 */
+        height: auto;
+    }
+    .footer {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+        padding: 10px;
+    }
+    .footer a {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    .language-switcher {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6); /* 半透明背景 */
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    z-index: 10; /* 確保在其他元素之上 */
+    font-size: 14px; /* 調整字體大小 */
+}
+
+.language-switcher a {
+    color: #fff; /* 白色文字 */
+    text-decoration: none;
+}
+
+.language-switcher a:hover {
+    text-decoration: underline;
+}
+
+    audio {
+        display: none;
+    }
+
+    /* 超連結顏色 */
+    a {
+        color: #00aaff; /* 初始顏色 */
+        text-decoration: none; /* 取消下劃線 */
+    }
+
+    /* 超連結懸停顏色 */
+    a:hover {
+        color: #0099cc; /* 懸停顏色 */
+        text-decoration: underline; /* 懸停時顯示下劃線 */
+    }
+
+    /* 超連結被點擊後顏色 */
+    a:active {
+        color: #0077aa; /* 點擊顏色 */
+    }
+
+    /* 超連結已經訪問過後顏色 */
+    a:visited {
+        color: #ffffff /* 訪問過的顏色 */
+    }
+</style>
+
+</head>
+<body>
+    <div class="language-switcher">
+        <a href="wheein_2024_en.html" target="_self"">English</a>
+        <a href="wheein_2024_jp.html" target="_self"">日本語</a>
+    </div>
+    <div class="slideshow">
+        <img src="image1.jpg" class="active" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2">
+        <img src="image3.jpg" alt="Image 3">
+		<img src="image0.jpg" alt="Image 0">
+        <!-- 可以根據需要增加更多圖片 -->
+        <div class="overlay"></div> <!-- 遮罩層 -->
+        <div class="text-container">
+            <p><a href="https://www.youtube.com/watch?v=vDDvlNZJRIY" target="_blank">2024 1ST WORLD TOUR : WHEE IN THE MOOD [BEYOND] ENCORE</a> X Sightseeing in Kaohsiung</p>
+            <p> Thank you, Moomoos! Wheein's encore concert in Kaohsiung on August 24th is SOLD OUT!! Tickets for August 25th are still available, so please come to Kaohsiung and enjoy Wheein's live performance while sightseeing! <br/>If you have any questions about tourism or tickets, feel free to ask. <a href="https://ticket.ibon.com.tw/ActivityInfo/Details/38466" target="_blank">TICKETING NOW!</a></p>
+            <div class="youtube-container">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/IKISOlTAYLY?si=hwOWxefP_JB4ti0Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<h3>Whee In Coco Water</h3>
+				</div>
+				<div class="video-item">
+					<iframe src="https://www.youtube.com/embed/a6b7WsP9RkQ?si=TvMW_3FQWrmipY57" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<h3>TOP 10 Things to do in Kaohsiung, Taiwan 2024!</h3>
+				</div>              
+                <!-- 可以根據需要增加更多 YouTube 播放小視窗 -->
+            </div>
+        </div>
+    </div>
+    <audio id="background-music" autoplay>
+        <source src="background-music.mp3" type="audio/mp3">
+        您的瀏覽器不支持音源。
+    </audio>
+
+    <div class="footer">
+        <a href="mailto:wheeinthemoo.tw@gmail.com">Email</a>
+		<a href="https://www.facebook.com/wheeinthemoo.tw" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/wheeinthemoo.tw" target="_blank">Instagram</a>
+        <a href="https://x.com/wheeinthemootw " target="_blank">X</a>
+        
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.slideshow img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 3000); // 每3秒更換一次圖片
+
+        // 監聽音樂播放結束事件
+        //const audio = document.getElementById('background-music');
+        //audio.addEventListener('ended', function() {
+        //    console.log('音樂播放完成');
+        //    // 音樂播放完成後的處理，例如顯示提示或執行其他動作
+        //});
+    </script>
+</body>
+</html>
