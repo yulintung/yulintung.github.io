@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒計時到2025年11月10日</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+            font-size: 1.3rem;
+        }
+        .countdown-item {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .countdown-container {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>到2025年11月10日 00:00的倒計時</h1>
+    
+    <div class="countdown-container">
+        <div class="countdown-item" id="countdown-detail">
+            計算中...
+        </div>
+        <div class="countdown-item" id="countdown-weeks">
+            計算中...
+        </div>
+        <div class="countdown-item" id="countdown-months">
+            計算中...
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date('2025-11-10T00:00:00');
+            const now = new Date();
+            
+            // 如果目標日期已過，顯示結束信息
+            if (now >= targetDate) {
+                document.getElementById('countdown-detail').textContent = "時間已到!";
+                document.getElementById('countdown-weeks').textContent = "時間已到!";
+                document.getElementById('countdown-months').textContent = "時間已到!";
+                return;
+            }
+            
+            // 計算剩餘的總毫秒數
+            const diff = targetDate - now;
+            
+            // 計算天、時、分、秒
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // 計算周數
+            const weeks = Math.floor(days / 7);
+            const remainingDays = days % 7;
+            
+            // 計算月數（近似值，使用平均每月30.44天）
+            const months = Math.floor(days / 30.44);
+            const remainingDaysAfterMonths = Math.floor(days % 30.44);
+            
+            // 更新顯示
+            document.getElementById('countdown-detail').textContent = 
+                `還有 ${days} 天 ${hours} 小時 ${minutes} 分鐘 ${seconds} 秒`;
+            
+            document.getElementById('countdown-weeks').textContent = 
+                `還有 ${weeks} 周 ${remainingDays} 天`;
+            
+            document.getElementById('countdown-months').textContent = 
+                `還有 ${months} 個月 ${remainingDaysAfterMonths} 天`;
+        }
+        
+        // 初始更新
+        updateCountdown();
+        
+        // 每秒更新一次
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
